@@ -20,9 +20,14 @@ docker compose up -d       # 固定端口 8888（nginx 静态服务），然后�
 - 登录页点「使用演示账号」（`demo@axon.com`，任意密码）→ 有 3 个持仓、10 笔当前委托、历史记录，可以直接体验全部功能。
 - 其他邮箱登录 / 注册（Mock 验证码固定 `123456`）→ 得到空白的新账户（开通送 10,000 体验金）。
 - 手机看效果：电脑和手机连同一个 Wi-Fi，手机浏览器打开 `http://电脑IP:8888/`。
-- 必须通过 `http://` 访问（不能双击 `index.html`），因为用了浏览器的 ES 模块。
+- 必须通过 `http://` 访问（不能双击 `index.html`），因为用了浏览器的 ES 模块；双击打开会看到提示页。
+- **页面尺寸**：窗口宽度 ≥ 500px（桌面浏览器）时固定为 **440×956** 手机画面并居中，窗口高度不够会等比缩小，下方有提示文字；窄于 500px（真手机 / App）全屏展示。
 - **Console 请求日志**：Mock 模式下每次接口调用都会在浏览器 Console 输出一行 `[mock] POST /orders/create  3ms  OK`（失败显示错误码），点开可看入参 `request` 和响应 `response`；`?log=0` 关闭。耗时只算 Mock 引擎本身，不含模拟延迟。
 - 「我的」页底部有 **Mock 调试工具**：模拟断网、行情延迟、补差失败、重置数据。
+
+**地址参数**（Mock 调试用）：`?mock=0` 关闭 Mock（走真实接口）、`?log=0` 关闭 Console 请求日志、`?debug=1` 不注册 Service Worker。
+
+**Git**：远端 `http://localhost:3000/Axon/axon-client.git`，分支 `main`。`api-doc/` 不在本仓库内，`mock-data/` 是它的拷贝。
 
 ## 2. 目录
 
@@ -44,7 +49,10 @@ js/
 mock-data/           ★ Mock 数据源（symbols.json、demo-account.json），真源在 ../api-doc/mock/，用 scripts/sync-mock.sh 同步
 vendor/               vue.global.prod.js、klinecharts.min.js（本地副本，不依赖 CDN）
 sw.js manifest.webmanifest icon.svg   PWA（添加到主屏幕）
-serve.py              本地静态服务器
+serve.py              本地静态服务器（无 Docker 时的备用）
+docker-compose.yml    Docker 启动（nginx，端口 8888，源码只读挂载）
+docker/nginx.conf     nginx 配置（不缓存、MIME 类型）
+scripts/              build-www.sh（打包 www/）、sync-mock.sh（同步 Mock 数据）
 ```
 
 ## 3. 改演示数据（Mock 数据源）
