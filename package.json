@@ -4,7 +4,7 @@
   "private": true,
   "description": "Axon 合约模拟交易 C 端（H5 + iOS + Android，无构建步骤；打包 App 用 Capacitor）",
   "scripts": {
-    "dev": "python3 serve.py 8080",
+    "dev": "python3 serve.py 8888",
     "build:www": "bash scripts/build-www.sh",
     "cap:add:ios": "npm run build:www && cap add ios",
     "cap:add:android": "npm run build:www && cap add android",
