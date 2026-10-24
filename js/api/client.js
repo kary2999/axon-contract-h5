@@ -46,19 +46,35 @@ function envelope(code, msg, data, traceId) {
 let mock = null;
 const loadMock = async () => (mock = mock || { ...(await import('../mock/handlers.js')), ...(await import('../mock/util.js')) });
 
+// Mock 请求日志：[mock] POST /orders/create  12ms  OK / 错误码，点开可看入参与响应
+function logMock(method, path, body, kind, res, t0) {
+  if (!config.LOG_API) return;
+  const ms = Math.round(performance.now() - t0);
+  const ok = kind === 'ok';
+  const tag = ok ? 'OK' : (res && res.code) || 'ERROR';
+  console.groupCollapsed(`%c[mock]%c ${method} ${path}  %c${ms}ms  ${tag}`, 'color:#F0B90B;font-weight:bold', 'color:inherit', `color:${ok ? '#0ECB81' : '#F6465D'}`);
+  console.log('request ', body || {});
+  console.log(ok ? 'response' : 'error   ', ok ? res : { code: res && res.code, msg: res && res.message });
+  console.groupEnd();
+}
+
 async function rawSend(method, path, body, traceId, signal) {
   if (config.USE_MOCK) {
     const { mockRequest, OPEN_PATHS, currentToken, BizError, sleep, rand } = await loadMock();
     await sleep(rand(...config.MOCK_LATENCY_MS));
     if (signal && signal.aborted) throw new DOMException('Aborted', 'AbortError');
     if (!OPEN_PATHS.includes(path) && !currentToken()) {
+      logMock(method, path, body, 'err', { code: 'AUTH_TOKEN_100', message: '请先登录' }, performance.now());
       return { status: 401, body: envelope('AUTH_TOKEN_100', '请先登录', {}, traceId) };
     }
     if (window.__mockOffline) throw new TypeError('Failed to fetch');
+    const t0 = performance.now();
     try {
       const data = mockRequest(method, path, body ? JSON.parse(JSON.stringify(body)) : {});
+      logMock(method, path, body, 'ok', data, t0);
       return { status: 200, body: envelope('0', 'success', data === undefined ? {} : data, traceId) };
     } catch (e) {
+      logMock(method, path, body, 'err', e, t0);
       if (e instanceof BizError) {
         const status = e.code === 'COMMON_COMMON_401' ? 429 : e.code.startsWith('AUTH_TOKEN') ? 401 : e.code === 'COMMON_COMMON_502' ? 502 : 200;
         return { status, body: envelope(e.code, e.message, e.data || {}, traceId) };

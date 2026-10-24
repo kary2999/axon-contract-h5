@@ -10,5 +10,6 @@ export const config = {
   REQUEST_TIMEOUT_MS: 10000,           // 规范：请求超时默认 10s
   MOCK_LATENCY_MS: [60, 220],          // Mock 接口随机延迟范围
   DEBUG: q.get('debug') === '1',
+  LOG_API: q.get('log') !== '0',       // Mock 请求日志：每次调用在 console 输出接口、入参、响应（?log=0 关闭）
   DEMO_EMAIL: 'demo@axon.com',        // 仅 Mock：带种子数据的演示账号
 };
