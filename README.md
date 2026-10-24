@@ -10,8 +10,12 @@
 ## 1. 跑起来
 
 ```bash
-python3 serve.py 8888      # 然后打开 http://localhost:8888/
+docker compose up -d       # 固定端口 8888（nginx 静态服务），然后打开 http://localhost:8888/
 ```
+
+- 源码目录只读挂载进容器，**改了文件直接刷新浏览器即生效**，不需要重建镜像、不需要重启。
+- 常用：`docker compose logs -f`（看访问日志）、`docker compose restart`、`docker compose down`（停止并删除容器）。容器带 `restart: unless-stopped`，Docker 启动后自动拉起。
+- 没有 Docker 时的备用方式：`python3 serve.py 8888`。
 
 - 登录页点「使用演示账号」（`demo@axon.com`，任意密码）→ 有 3 个持仓、10 笔当前委托、历史记录，可以直接体验全部功能。
 - 其他邮箱登录 / 注册（Mock 验证码固定 `123456`）→ 得到空白的新账户（开通送 10,000 体验金）。

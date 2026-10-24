@@ -1,0 +1,11 @@
+# 固定端口 8888 提供静态服务；源码目录只读挂载，改文件刷新浏览器即生效，无需重建镜像
+services:
+  axon-client:
+    image: nginx:alpine
+    container_name: axon-client
+    restart: unless-stopped
+    ports:
+      - "8888:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
