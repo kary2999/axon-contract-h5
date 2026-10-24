@@ -5,5 +5,5 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 rm -rf www
 mkdir -p www
-cp -R index.html manifest.webmanifest sw.js icon.svg css js vendor www/
+cp -R index.html manifest.webmanifest sw.js icon.svg css js vendor mock-data www/
 echo "www/ 已生成（$(find www -type f | wc -l | tr -d ' ') 个文件）"

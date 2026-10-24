@@ -16,7 +16,6 @@ const def = (s) => {
 const csz = (s) => Number(def(s).contract_size);
 const st = (s) => market.state[s];
 const MAKER = 0.0002; const TAKER = 0.0005;
-const MARKET_MAX_COIN = { BTC: 100, ETH: 1500, SOL: 30000, BNB: 8000, XRP: 5e6, DOGE: 2e7, TON: 6e5, AVAX: 8e4 };
 const sideTxt = (o) => (o.effect === 'OPEN' ? '开' : '平') + (o.side === 'LONG' ? '多' : '空');
 
 export class Engine {
@@ -128,7 +127,7 @@ export class Engine {
     let est = { avg: s.last, slip: 0 };
     if (type === 'MARKET' || (type === 'CONDITIONAL' && req.triggered_order_type === 'MARKET')) {
       const coin = lots * size;
-      if (coin > MARKET_MAX_COIN[d.base_coin]) throw new BizError('CONTRACT_ORDER_020', `市价单单笔最大 ${MARKET_MAX_COIN[d.base_coin]} ${d.base_coin}，请分笔下单或改用限价 / 冰山委托`, { max_market_qty: String(Math.floor(MARKET_MAX_COIN[d.base_coin] / size)) });
+      if (lots > Number(d.max_market_qty)) throw new BizError('CONTRACT_ORDER_020', `市价单单笔最大 ${(Number(d.max_market_qty) * size).toFixed(d.qty_scale)} ${d.base_coin}，请分笔下单或改用限价 / 冰山委托`, { max_market_qty: String(d.max_market_qty) });
       if (lots > 0) {
         const r = market.sweep(req.symbol, buy ? 'BUY' : 'SELL', coin);
         est = { avg: r.avg, slip: Math.abs(r.avg - s.last) / s.last };

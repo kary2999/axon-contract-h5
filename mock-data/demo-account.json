@@ -1,0 +1,1004 @@
+{
+  "_说明": "演示账号 demo@axon.com 的初始数据。每个对象的字段 = api-doc 里对应接口的响应对象（Order/Position/Fill/Ledger/ApiKey）；mark_price、强平价、盈亏等随行情变化的派生字段不写，由 Mock 实时计算。时间写法见 README.md（相对时间 -3h / +7d）。",
+  "email": "demo@axon.com",
+  "show_uid": 58213907,
+  "funding_mode": "GRANT",
+  "available_balance": "3000.00",
+  "is_risk_acked": true,
+  "favorites": [
+    "BTC-USDT-PERP",
+    "ETH-USDT-PERP"
+  ],
+  "settings": {
+    "BTC-USDT-PERP": {
+      "leverage": 20,
+      "margin_mode": "ISOLATED"
+    }
+  },
+  "trade_settings": {
+    "confirm_before_order": true
+  },
+  "positions": [
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000001",
+      "symbol": "SOL-USDT-PERP",
+      "position_side": "LONG",
+      "position_status": "OPEN",
+      "margin_mode": "ISOLATED",
+      "leverage": 25,
+      "position_qty": "1096",
+      "avg_price": "182.450",
+      "position_margin_amount": "79.99",
+      "opened_time": "-5h",
+      "adl_level": 4
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000002",
+      "symbol": "BTC-USDT-PERP",
+      "position_side": "LONG",
+      "position_status": "OPEN",
+      "margin_mode": "ISOLATED",
+      "leverage": 20,
+      "position_qty": "20",
+      "avg_price": "67200.0",
+      "position_margin_amount": "67.20",
+      "opened_time": "-2d",
+      "adl_level": 2
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000003",
+      "symbol": "ETH-USDT-PERP",
+      "position_side": "SHORT",
+      "position_status": "OPEN",
+      "margin_mode": "ISOLATED",
+      "leverage": 10,
+      "position_qty": "50",
+      "avg_price": "3504.42",
+      "position_margin_amount": "175.22",
+      "opened_time": "-30h",
+      "adl_level": 3
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000016",
+      "symbol": "SOL-USDT-PERP",
+      "position_side": "LONG",
+      "position_status": "CLOSED",
+      "margin_mode": "ISOLATED",
+      "leverage": 50,
+      "position_qty": "1096",
+      "avg_price": "182.450",
+      "position_margin_amount": "0.00",
+      "opened_time": "-1d3h",
+      "adl_level": 1,
+      "close_type": "LIQUIDATED",
+      "close_avg_price": "178.800",
+      "closed_time": "-1d2h",
+      "close_pnl_amount": "-40.00",
+      "fee_amount": "0.00",
+      "funding_amount": "0.00",
+      "realized_pnl_amount": "-40.00",
+      "trigger_price": "178.986",
+      "liq_price_at_close": "178.986",
+      "timeline": [
+        {
+          "time": "-1d2h36m",
+          "event": "OPEN",
+          "text": "市价开多 10.96 SOL，保证金 40.00 USDT"
+        },
+        {
+          "time": "-1d2h12m",
+          "event": "RISK_WARNING",
+          "text": "标记价 179.30，距强平 < 10%，已推送提醒",
+          "mark_price": "179.300"
+        },
+        {
+          "time": "-1d2h",
+          "event": "LIQUIDATION_TRIGGERED",
+          "text": "标记价跌至 178.986，触及逐仓强平价",
+          "mark_price": "178.986"
+        },
+        {
+          "time": "-1d2h",
+          "event": "LIQUIDATION_SETTLED",
+          "text": "以破产价 178.800 平仓，仓位移入历史持仓"
+        }
+      ]
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000017",
+      "symbol": "BTC-USDT-PERP",
+      "position_side": "SHORT",
+      "position_status": "CLOSED",
+      "margin_mode": "ISOLATED",
+      "leverage": 20,
+      "position_qty": "50",
+      "avg_price": "68420.0",
+      "position_margin_amount": "0.00",
+      "opened_time": "-3d",
+      "adl_level": 1,
+      "close_type": "ADL",
+      "close_avg_price": "67707.8",
+      "closed_time": "-1d11h",
+      "close_pnl_amount": "35.60",
+      "fee_amount": "0.00",
+      "funding_amount": "0.00",
+      "realized_pnl_amount": "35.60"
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000018",
+      "symbol": "ETH-USDT-PERP",
+      "position_side": "SHORT",
+      "position_status": "CLOSED",
+      "margin_mode": "ISOLATED",
+      "leverage": 10,
+      "position_qty": "50",
+      "avg_price": "3548.10",
+      "position_margin_amount": "0.00",
+      "opened_time": "-3d4h",
+      "adl_level": 1,
+      "close_type": "MANUAL",
+      "close_avg_price": "3511.70",
+      "closed_time": "-2d5h",
+      "close_pnl_amount": "19.28",
+      "fee_amount": "1.08",
+      "funding_amount": "-0.21",
+      "realized_pnl_amount": "18.20"
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-000000000019",
+      "symbol": "BTC-USDT-PERP",
+      "position_side": "LONG",
+      "position_status": "CLOSED",
+      "margin_mode": "ISOLATED",
+      "leverage": 20,
+      "position_qty": "20",
+      "avg_price": "66480.0",
+      "position_margin_amount": "0.00",
+      "opened_time": "-2d15h30m",
+      "adl_level": 1,
+      "close_type": "TAKE_PROFIT",
+      "close_avg_price": "67600.0",
+      "closed_time": "-2d14h",
+      "close_pnl_amount": "23.40",
+      "fee_amount": "1.21",
+      "funding_amount": "0.21",
+      "realized_pnl_amount": "22.40",
+      "trigger_price": "67600.0"
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-00000000001a",
+      "symbol": "DOGE-USDT-PERP",
+      "position_side": "SHORT",
+      "position_status": "CLOSED",
+      "margin_mode": "ISOLATED",
+      "leverage": 25,
+      "position_qty": "1500",
+      "avg_price": "0.12410",
+      "position_margin_amount": "0.00",
+      "opened_time": "-3d9h",
+      "adl_level": 1,
+      "close_type": "STOP_LOSS",
+      "close_avg_price": "0.12650",
+      "closed_time": "-3d5h",
+      "close_pnl_amount": "-8.65",
+      "fee_amount": "0.95",
+      "funding_amount": "0.00",
+      "realized_pnl_amount": "-9.60",
+      "trigger_price": "0.12650"
+    },
+    {
+      "position_oid": "01930000-0000-7000-8000-00000000001b",
+      "symbol": "ETH-USDT-PERP",
+      "position_side": "SHORT",
+      "position_status": "CLOSED",
+      "margin_mode": "ISOLATED",
+      "leverage": 25,
+      "position_qty": "100",
+      "avg_price": "3402.50",
+      "position_margin_amount": "0.00",
+      "opened_time": "-22d12h",
+      "adl_level": 1,
+      "close_type": "LIQUIDATED",
+      "close_avg_price": "3550.00",
+      "closed_time": "-22d",
+      "close_pnl_amount": "-56.00",
+      "fee_amount": "0.00",
+      "funding_amount": "0.00",
+      "realized_pnl_amount": "-56.00",
+      "trigger_price": "3535.80",
+      "liq_price_at_close": "3535.80",
+      "timeline": [
+        {
+          "time": "-22d12h",
+          "event": "OPEN",
+          "text": "市价开空 1.00 ETH，保证金 136.10 USDT"
+        },
+        {
+          "time": "-22d10m",
+          "event": "LIQUIDATION_TRIGGERED",
+          "text": "标记价涨至 3,535.8，触及逐仓强平价",
+          "mark_price": "3535.8"
+        },
+        {
+          "time": "-22d",
+          "event": "LIQUIDATION_SETTLED",
+          "text": "以破产价平仓，仓位移入历史持仓"
+        }
+      ]
+    }
+  ],
+  "orders_current": [
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000004",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "LIMIT",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "PARTIALLY_FILLED",
+      "quantity": "20",
+      "filled_qty": "8",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "40.50",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-3h",
+      "update_time": "-2h",
+      "timeline": [
+        {
+          "time": "-3h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "67499.8",
+      "price": "67500.0",
+      "tp_trigger_price": "70000.0",
+      "sl_trigger_price": "65500.0"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000005",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "LIMIT",
+      "position_side": "SHORT",
+      "position_effect": "OPEN",
+      "order_status": "OPEN",
+      "quantity": "50",
+      "filled_qty": "0",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "340.50",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-2h30m",
+      "update_time": "-2h30m",
+      "timeline": [
+        {
+          "time": "-2h30m",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "price": "68100.0"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000006",
+      "symbol": "ETH-USDT-PERP",
+      "order_type": "LIMIT",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_status": "OPEN",
+      "quantity": "30",
+      "filled_qty": "0",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-2h",
+      "update_time": "-2h",
+      "timeline": [
+        {
+          "time": "-2h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "price": "3480.00",
+      "position_oid": "01930000-0000-7000-8000-000000000003"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000007",
+      "symbol": "ETH-USDT-PERP",
+      "order_type": "TPSL",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_status": "PENDING_TRIGGER",
+      "quantity": "0",
+      "filled_qty": "0",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-28h",
+      "update_time": "-28h",
+      "timeline": [
+        {
+          "time": "-28h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "tp_trigger_price": "3300.00",
+      "sl_trigger_price": "3620.00",
+      "position_oid": "01930000-0000-7000-8000-000000000003"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000008",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "TPSL",
+      "position_side": "LONG",
+      "position_effect": "CLOSE",
+      "order_status": "PENDING_TRIGGER",
+      "quantity": "10",
+      "filled_qty": "0",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-20h",
+      "update_time": "-20h",
+      "timeline": [
+        {
+          "time": "-20h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "tp_trigger_price": "69000.0",
+      "sl_trigger_price": "66000.0",
+      "position_oid": "01930000-0000-7000-8000-000000000002"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000009",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "TRAILING",
+      "position_side": "LONG",
+      "position_effect": "CLOSE",
+      "order_status": "PENDING_TRIGGER",
+      "quantity": "0",
+      "filled_qty": "0",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-15h",
+      "update_time": "-15h",
+      "timeline": [
+        {
+          "time": "-15h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "trailing_mode": "RATE",
+      "trailing_callback_value": "0.01",
+      "trailing_activation_price": "67500.0",
+      "trailing_activated": true,
+      "trailing_anchor_price": "68120.0",
+      "trailing_stop_price": "67438.8",
+      "position_oid": "01930000-0000-7000-8000-000000000002"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-00000000000a",
+      "symbol": "ETH-USDT-PERP",
+      "order_type": "TRAILING",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_status": "PENDING_TRIGGER",
+      "quantity": "30",
+      "filled_qty": "0",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-10h",
+      "update_time": "-10h",
+      "timeline": [
+        {
+          "time": "-10h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "trailing_mode": "VALUE",
+      "trailing_callback_value": "30",
+      "trailing_activation_price": "3400.00",
+      "trailing_activated": false,
+      "position_oid": "01930000-0000-7000-8000-000000000003"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-00000000000b",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "CONDITIONAL",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "PENDING_TRIGGER",
+      "quantity": "20",
+      "filled_qty": "0",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-6h",
+      "update_time": "-6h",
+      "timeline": [
+        {
+          "time": "-6h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "price": "68600.0",
+      "triggered_order_type": "LIMIT",
+      "trigger_price": "68500.0",
+      "trigger_condition": "GTE",
+      "trigger_basis": "MARK_PRICE",
+      "expire_time": "+7d"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-00000000000c",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "CONDITIONAL",
+      "position_side": "SHORT",
+      "position_effect": "OPEN",
+      "order_status": "PENDING_TRIGGER",
+      "quantity": "30",
+      "filled_qty": "0",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-8h",
+      "update_time": "-8h",
+      "timeline": [
+        {
+          "time": "-8h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "triggered_order_type": "MARKET",
+      "trigger_price": "66000.0",
+      "trigger_condition": "LTE",
+      "trigger_basis": "MARK_PRICE",
+      "expire_time": "+7d"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-00000000000d",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "ICEBERG",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "PARTIALLY_FILLED",
+      "quantity": "500",
+      "filled_qty": "230",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "911.25",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-4h",
+      "update_time": "-4h",
+      "timeline": [
+        {
+          "time": "-4h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "67499.6",
+      "price": "67500.0",
+      "iceberg_visible_qty": "100",
+      "iceberg_slice_total": 5,
+      "iceberg_slice_index": 3,
+      "iceberg_slice_qty": "70",
+      "iceberg_remaining_qty": "200"
+    }
+  ],
+  "orders_history": [
+    {
+      "order_oid": "01930000-0000-7000-8000-00000000000e",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "LIMIT",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "FILLED",
+      "quantity": "20",
+      "filled_qty": "20",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-2d",
+      "update_time": "-2d",
+      "timeline": [
+        {
+          "time": "-2d",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "67200.0",
+      "price": "67200.0",
+      "fee_amount": "0.2700"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-00000000000f",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "LIMIT",
+      "position_side": "SHORT",
+      "position_effect": "OPEN",
+      "order_status": "PARTIALLY_CANCELED",
+      "quantity": "50",
+      "filled_qty": "12",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-2d2h",
+      "update_time": "-2d1h",
+      "timeline": [
+        {
+          "time": "-2d2h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "67950.0",
+      "price": "67950.0",
+      "fee_amount": "0.1600",
+      "cancel_reason": "USER"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000010",
+      "symbol": "ETH-USDT-PERP",
+      "order_type": "MARKET",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_status": "FILLED",
+      "quantity": "50",
+      "filled_qty": "50",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-2d5h",
+      "update_time": "-2d5h",
+      "timeline": [
+        {
+          "time": "-2d5h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "3511.70",
+      "fee_amount": "0.8800",
+      "slippage_rate": "0.0001"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000011",
+      "symbol": "DOGE-USDT-PERP",
+      "order_type": "TPSL",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_status": "FILLED",
+      "quantity": "1500",
+      "filled_qty": "1500",
+      "leverage": 25,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": true,
+      "time_in_force": "GTC",
+      "create_time": "-3d9h",
+      "update_time": "-3d5h",
+      "timeline": [
+        {
+          "time": "-3d9h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0.12652",
+      "sl_trigger_price": "0.12650",
+      "fee_amount": "0.9500",
+      "is_triggered": true,
+      "trigger_time": "-3d5h",
+      "position_oid": "01930000-0000-7000-8000-00000000001a"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000012",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "CONDITIONAL",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "TRIGGER_FAILED",
+      "quantity": "200",
+      "filled_qty": "0",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-4d15m",
+      "update_time": "-4d",
+      "timeline": [
+        {
+          "time": "-4d15m",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "price": "68100.0",
+      "triggered_order_type": "LIMIT",
+      "trigger_price": "68000.0",
+      "trigger_condition": "GTE",
+      "fail_reason": "INSUFFICIENT_MARGIN",
+      "fail_detail": {
+        "required_margin_amount": "681.00",
+        "available_balance": "300.00"
+      },
+      "is_triggered": true,
+      "trigger_time": "-4d"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000013",
+      "symbol": "ETH-USDT-PERP",
+      "order_type": "CONDITIONAL",
+      "position_side": "SHORT",
+      "position_effect": "OPEN",
+      "order_status": "SYSTEM_CANCELED",
+      "quantity": "30",
+      "filled_qty": "0",
+      "leverage": 10,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-11d",
+      "update_time": "-4d",
+      "timeline": [
+        {
+          "time": "-11d",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "triggered_order_type": "MARKET",
+      "trigger_price": "3350.00",
+      "trigger_condition": "LTE",
+      "cancel_reason": "EXPIRED",
+      "expire_time": "-4d"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000014",
+      "symbol": "SOL-USDT-PERP",
+      "order_type": "CONDITIONAL",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "FILLED",
+      "quantity": "500",
+      "filled_qty": "500",
+      "leverage": 50,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-22d",
+      "update_time": "-21d",
+      "timeline": [
+        {
+          "time": "-22d",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "175.500",
+      "price": "175.500",
+      "triggered_order_type": "LIMIT",
+      "trigger_price": "175.000",
+      "trigger_condition": "GTE",
+      "is_triggered": true,
+      "trigger_time": "-21d",
+      "fee_amount": "0.3000"
+    },
+    {
+      "order_oid": "01930000-0000-7000-8000-000000000015",
+      "symbol": "BTC-USDT-PERP",
+      "order_type": "LIMIT",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_status": "CANCELED",
+      "quantity": "10",
+      "filled_qty": "0",
+      "leverage": 20,
+      "margin_mode": "ISOLATED",
+      "frozen_margin_amount": "0.00",
+      "reduce_only": false,
+      "time_in_force": "GTC",
+      "create_time": "-2d5h",
+      "update_time": "-2d4h",
+      "timeline": [
+        {
+          "time": "-2d5h",
+          "event": "CREATED",
+          "text": "委托已提交"
+        }
+      ],
+      "avg_fill_price": "0",
+      "price": "66000.0",
+      "cancel_reason": "USER"
+    }
+  ],
+  "fills": [
+    {
+      "fill_oid": "01930000-0000-7000-8000-00000000001c",
+      "symbol": "BTC-USDT-PERP",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_type": "ICEBERG",
+      "fill_role": "MAKER",
+      "price": "67499.6",
+      "quantity": "100",
+      "fill_amount": "6749.96",
+      "fee_amount": "1.3500",
+      "fee_rate": "0.0002",
+      "fill_time": "-3h30m",
+      "iceberg_slice_index": 2
+    },
+    {
+      "fill_oid": "01930000-0000-7000-8000-00000000001d",
+      "symbol": "BTC-USDT-PERP",
+      "position_side": "LONG",
+      "position_effect": "OPEN",
+      "order_type": "LIMIT",
+      "fill_role": "MAKER",
+      "price": "67200.0",
+      "quantity": "20",
+      "fill_amount": "1344.00",
+      "fee_amount": "0.2700",
+      "fee_rate": "0.0002",
+      "fill_time": "-2d"
+    },
+    {
+      "fill_oid": "01930000-0000-7000-8000-00000000001e",
+      "symbol": "BTC-USDT-PERP",
+      "position_side": "SHORT",
+      "position_effect": "OPEN",
+      "order_type": "LIMIT",
+      "fill_role": "MAKER",
+      "price": "67950.0",
+      "quantity": "12",
+      "fill_amount": "815.40",
+      "fee_amount": "0.1600",
+      "fee_rate": "0.0002",
+      "fill_time": "-2d2h"
+    },
+    {
+      "fill_oid": "01930000-0000-7000-8000-00000000001f",
+      "symbol": "ETH-USDT-PERP",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_type": "MARKET",
+      "fill_role": "TAKER",
+      "price": "3511.70",
+      "quantity": "50",
+      "fill_amount": "1755.85",
+      "fee_amount": "0.8800",
+      "fee_rate": "0.0005",
+      "fill_time": "-2d5h",
+      "realized_pnl_amount": "18.20"
+    },
+    {
+      "fill_oid": "01930000-0000-7000-8000-000000000020",
+      "symbol": "DOGE-USDT-PERP",
+      "position_side": "SHORT",
+      "position_effect": "CLOSE",
+      "order_type": "TPSL",
+      "fill_role": "TAKER",
+      "price": "0.12652",
+      "quantity": "1500",
+      "fill_amount": "189.78",
+      "fee_amount": "0.9500",
+      "fee_rate": "0.0005",
+      "fill_time": "-3d5h",
+      "realized_pnl_amount": "-9.60"
+    }
+  ],
+  "ledgers": [
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000021",
+      "ledger_type": "GRANT",
+      "currency": "USDT",
+      "ledger_amount": "10000.00",
+      "biz_desc": "开通赠送体验金",
+      "create_time": "-9d",
+      "before_balance": "0.00",
+      "after_balance": "10000.00"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-00000000002c",
+      "ledger_type": "ADJUST",
+      "currency": "USDT",
+      "ledger_amount": "-7004.01",
+      "biz_desc": "演示账户初始化（对齐当前可用余额）",
+      "create_time": "-8d",
+      "before_balance": "10000.00",
+      "after_balance": "2995.99"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000023",
+      "ledger_type": "REALIZED_PNL",
+      "currency": "USDT",
+      "ledger_amount": "-9.60",
+      "biz_desc": "DOGEUSDT 空 · 止损",
+      "create_time": "-3d5h",
+      "symbol": "DOGE-USDT-PERP",
+      "before_balance": "2995.99",
+      "after_balance": "2986.39"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000024",
+      "ledger_type": "FEE",
+      "currency": "USDT",
+      "ledger_amount": "-0.95",
+      "biz_desc": "DOGEUSDT 止损成交",
+      "create_time": "-3d5h",
+      "symbol": "DOGE-USDT-PERP",
+      "before_balance": "2986.39",
+      "after_balance": "2985.44"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000022",
+      "ledger_type": "FUNDING_FEE",
+      "currency": "USDT",
+      "ledger_amount": "-0.21",
+      "biz_desc": "ETHUSDT 空 · 支付",
+      "create_time": "-2d13h",
+      "symbol": "ETH-USDT-PERP",
+      "before_balance": "2985.44",
+      "after_balance": "2985.23"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000025",
+      "ledger_type": "REALIZED_PNL",
+      "currency": "USDT",
+      "ledger_amount": "18.20",
+      "biz_desc": "ETHUSDT 空 · 平仓",
+      "create_time": "-2d5h",
+      "symbol": "ETH-USDT-PERP",
+      "before_balance": "2985.23",
+      "after_balance": "3003.43"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000026",
+      "ledger_type": "FEE",
+      "currency": "USDT",
+      "ledger_amount": "-0.88",
+      "biz_desc": "ETHUSDT 平空成交",
+      "create_time": "-2d5h",
+      "symbol": "ETH-USDT-PERP",
+      "before_balance": "3003.43",
+      "after_balance": "3002.55"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000028",
+      "ledger_type": "FUNDING_FEE",
+      "currency": "USDT",
+      "ledger_amount": "0.13",
+      "biz_desc": "BTCUSDT 空 · 收取",
+      "create_time": "-1d3h",
+      "symbol": "BTC-USDT-PERP",
+      "before_balance": "3002.55",
+      "after_balance": "3002.68"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000027",
+      "ledger_type": "LIQUIDATION",
+      "currency": "USDT",
+      "ledger_amount": "-40.00",
+      "biz_desc": "SOLUSDT 多 50× · 逐仓清算",
+      "create_time": "-1d2h",
+      "symbol": "SOL-USDT-PERP",
+      "liquidation_price": "178.986",
+      "before_balance": "3002.68",
+      "after_balance": "2962.68"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-000000000029",
+      "ledger_type": "MARGIN_ADJUST",
+      "currency": "USDT",
+      "ledger_amount": "-20.00",
+      "biz_desc": "BTCUSDT 多 · 追加保证金",
+      "create_time": "-1d",
+      "symbol": "BTC-USDT-PERP",
+      "before_balance": "2962.68",
+      "after_balance": "2942.68"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-00000000002a",
+      "ledger_type": "FEE",
+      "currency": "USDT",
+      "ledger_amount": "-0.27",
+      "biz_desc": "BTCUSDT 开多成交",
+      "create_time": "-6h",
+      "symbol": "BTC-USDT-PERP",
+      "before_balance": "2942.68",
+      "after_balance": "2942.41"
+    },
+    {
+      "ledger_oid": "01930000-0000-7000-8000-00000000002b",
+      "ledger_type": "CLAIM",
+      "currency": "USDT",
+      "ledger_amount": "57.59",
+      "biz_desc": "每日补充，补至 10,000",
+      "create_time": "-5h",
+      "before_balance": "2942.41",
+      "after_balance": "3000.00"
+    }
+  ],
+  "api_keys": [
+    {
+      "api_key_oid": "01930000-0000-7000-8000-00000000002d",
+      "name": "量化-做市机器人",
+      "api_key": "ak_7f3c2e91d04b4a8f9c55e1b0a6d39b21",
+      "account_type": "DEMO",
+      "scopes": [
+        "READ",
+        "TRADE"
+      ],
+      "trade_scopes": [
+        "FUTURES"
+      ],
+      "ip_whitelist": [
+        "203.0.113.24",
+        "203.0.113.25",
+        "203.0.113.26"
+      ],
+      "create_time": "-30d",
+      "last_used_time": "-2h"
+    },
+    {
+      "api_key_oid": "01930000-0000-7000-8000-00000000002e",
+      "name": "行情看板",
+      "api_key": "ak_90de44b7c1a24f08a1e9d2b36c7f41f8",
+      "account_type": "DEMO",
+      "scopes": [
+        "READ"
+      ],
+      "trade_scopes": [],
+      "ip_whitelist": [],
+      "create_time": "-84d",
+      "expire_time": "+6d"
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 
 import { market, INTERVALS } from './market.js';
 import { loadDB, saveDB, newAccount, seedDemo, DEMO_EMAIL } from './db.js';
+import { fixtures } from './data.js';
 import { Engine } from './engine.js';
 import { orderOut, positionOut, fillOut, ledgerOut, symbolOut, posLiq, posMinMargin, tierFor } from './mappers.js';
 import { BizError, oid, iso, cnDate, nextCnMidnight, HOUR, DAY } from './util.js';
@@ -142,7 +143,7 @@ R('POST', '/auth/login', (b) => {
   if (u && u.password && u.password !== b.password && b.email !== DEMO_EMAIL) throw new BizError('AUTH_LOGIN_001', '账号或密码错误');
   const existed = !!u;
   if (!existed && b.email === DEMO_EMAIL) {
-    const acc = newAccount(DEMO_EMAIL, 58213907, false);
+    const acc = newAccount(DEMO_EMAIL, fixtures.demo.show_uid, false);
     seedDemo(acc);
     db.users[DEMO_EMAIL] = { email: DEMO_EMAIL, uid: acc.uid, password: null };
     db.accounts[acc.uid] = acc;
@@ -412,15 +413,7 @@ const keyOut = (k) => {
   const status = exp && exp < Date.now() ? 'EXPIRED' : exp && exp - Date.now() < 7 * DAY ? 'EXPIRING' : 'NORMAL';
   return { api_key_oid: k.oid, name: k.name, api_key: maskKey(k.api_key), account_type: k.account_type, scopes: k.scopes, trade_scopes: k.trade_scopes, ip_whitelist: k.ip_whitelist, ip_count: k.ip_whitelist.length, status, expire_time: k.expire_time || undefined, last_used_time: k.last_used_time || undefined, create_time: k.create_time };
 };
-function ensureKeys(a) {
-  if (a.email === DEMO_EMAIL && !a.keys_seeded) {
-    a.keys_seeded = true;
-    a.api_keys.push(
-      { oid: oid(), name: '量化-做市机器人', api_key: 'ak_7f3c2e91d04b4a8f9c55e1b0a6d39b21', account_type: 'DEMO', scopes: ['READ', 'TRADE'], trade_scopes: ['FUTURES'], ip_whitelist: ['203.0.113.24', '203.0.113.25', '203.0.113.26'], create_time: iso(Date.now() - 30 * DAY), last_used_time: iso(Date.now() - 2 * HOUR) },
-      { oid: oid(), name: '行情看板', api_key: 'ak_90de44b7c1a24f08a1e9d2b36c7f41f8', account_type: 'DEMO', scopes: ['READ'], trade_scopes: [], ip_whitelist: [], expire_time: iso(Date.now() + 6 * DAY), create_time: iso(Date.now() - 84 * DAY) },
-    );
-  }
-}
+function ensureKeys() { /* 演示账号的 API Key 已在 seedDemo 里从 mock-data 读入 */ }
 R('POST', '/auth/api-keys/list', () => { const a = needLogin(); ensureKeys(a); return { list: a.api_keys.map(keyOut), created_count: a.api_keys.length, max_count: 30 }; });
 R('POST', '/auth/api-keys/create', (b) => {
   const a = needLogin(); ensureKeys(a); needIdem(b);
@@ -476,5 +469,5 @@ export const OPEN_PATHS = ['/auth/email-codes/send', '/auth/register', '/auth/lo
 
 export function isLoggedIn() { return !!acct(); }
 export function currentToken() { return db.session ? db.session.token : null; }
-export function mockReset() { localStorage.removeItem('axon_mock_db_v2'); location.hash = '#/entry'; location.reload(); }
+export function mockReset() { localStorage.removeItem('axon_mock_db_v3'); location.hash = '#/entry'; location.reload(); }
 export { posLiq, posMinMargin };

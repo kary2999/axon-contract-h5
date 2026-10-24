@@ -5,7 +5,7 @@
 
 - 接口文档：`../api-doc/`（Mock 的字段与它一一对应）
 - 原型：`../axon-html-prototype/`
-- 当前是 **Mock 模式**：所有数据由浏览器里的模拟器生成，不连后端。
+- 当前是 **Mock 模式**：不连后端，演示数据来自 `mock-data/*.json`（`../api-doc/mock/` 的拷贝），行情由浏览器里的模拟器生成。
 
 ## 1. 跑起来
 
@@ -32,24 +32,36 @@ js/
     client.js         ★ 唯一的请求入口（Envelope、重试、401 刷新、幂等键）
     index.js          ★ 接口函数，一个函数 = 一个接口（对应 api-doc）
     ws.js             WebSocket 封装（断线重连 / 订阅 / 私有推送）
-  mock/               Mock 后端：行情模拟器 + 撮合 / 风控引擎 + 接口路由（接真实接口后可整个删掉）
+  mock/               Mock 后端：数据加载 + 行情模拟器 + 撮合 / 风控引擎 + 接口路由（接真实接口后可整个删掉）
   lib/format.js calc.js  格式化、合约计算（保证金 / 强平价 / 盈亏）
   components/ui.js    通用组件（弹层、Toast、输入框…）
   pages/              页面，一个文件一个模块（行情、交易、持仓、委托、历史、计算器、账户、API 管理）
+mock-data/           ★ Mock 数据源（symbols.json、demo-account.json），真源在 ../api-doc/mock/，用 scripts/sync-mock.sh 同步
 vendor/               vue.global.prod.js、klinecharts.min.js（本地副本，不依赖 CDN）
 sw.js manifest.webmanifest icon.svg   PWA（添加到主屏幕）
 serve.py              本地静态服务器
 ```
 
-## 3. 接真实后端
+## 3. 改演示数据（Mock 数据源）
+
+演示用的合约、持仓、委托、历史、流水、API Key 都是 JSON，格式就是接口响应对象。改法：
+
+```bash
+# 1. 改 ../api-doc/mock/demo-account.json 或 symbols.json（字段说明见 ../api-doc/mock/README.md）
+python3 ../api-doc/mock/validate.py      # 2. 校验
+bash scripts/sync-mock.sh                # 3. 同步到 mock-data/
+# 4. 刷新页面；已登录过的话：我的 → Mock 调试工具 → 重置 Mock 数据
+```
+
+## 4. 接真实后端
 
 1. `js/config.js`：`USE_MOCK: false`，填 `BASE_URL`（网关前缀 `/api/v1`）和 `WS_URL`。也可临时用地址参数 `?mock=0`。
 2. 页面代码不用改——页面只调 `js/api/index.js` 里的函数，那里的路径和字段就是 `api-doc/` 的接口。
 3. 对接时若字段 / 路径与文档不一致：**先改 `api-doc/`，再改 `api/index.js`**，不要在页面里零散适配。
-4. 上线前删除 `js/mock/`、`js/pages/account.js` 里的「Mock 调试工具」，并把 `js/main.js` / `js/api/*.js` 里对 `mock/` 的 import 去掉。
+4. 上线前删除 `js/mock/`、`mock-data/`、`js/pages/account.js` 里的「Mock 调试工具」，并把 `js/main.js` / `js/api/*.js` 里对 `mock/` 的 import 去掉。
 5. 金额 / 价格在接口里是字符串，**界面展示用 `lib/format.js`**；Mock 引擎里为了简单用了 JS 的 `number` 做计算，真实计算一律在后端，前端只做展示与预估（`lib/calc.js`），不要把它当成结算依据。
 
-## 4. 出三端
+## 5. 出三端
 
 | 目标 | 做法 | 你需要的东西 |
 |---|---|---|
@@ -70,7 +82,7 @@ npm run cap:open:android       # 用 Android Studio 打开，运行 / 生成 apk
 
 原理：Capacitor 生成两个原生工程，里面各有一个全屏的网页容器（WebView），`cap sync` 把 `www/` 复制进去。所以 App 里跑的就是这套网页，三端只有「外壳」不同。
 
-## 5. 已知限制 / 未验证（如实说明）
+## 6. 已知限制 / 未验证（如实说明）
 
 - **只在桌面浏览器（手机尺寸模拟）里验证过**；没有在真实手机、iOS Safari、安卓 WebView 上测过，也没做过性能压测。
 - **iOS / 安卓打包未验证**：本机没有完整 Xcode、JDK、Android SDK，`package.json` / `capacitor.config.json` 是按 Capacitor 6 的常规写法写的，首次执行可能要按提示调整。

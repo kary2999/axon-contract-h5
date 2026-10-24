@@ -1,0 +1,533 @@
+{
+  "_说明": "合约静态配置 = GET /contract/symbols/{symbol} 的响应（含 tiers）；mock 段只给行情模拟器用，真实接口里没有。详见 README.md。",
+  "symbols": [
+    {
+      "symbol": "BTC-USDT-PERP",
+      "base_coin": "BTC",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 125,
+      "contract_size": "0.001",
+      "price_tick": "0.1",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 1,
+      "qty_scale": 3,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "100000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 125,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 67842.5,
+        "change_24h": 0.0231,
+        "turnover_24h": 2100000000.0,
+        "volatility_per_sec": 0.00018
+      }
+    },
+    {
+      "symbol": "ETH-USDT-PERP",
+      "base_coin": "ETH",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 100,
+      "contract_size": "0.01",
+      "price_tick": "0.01",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 2,
+      "qty_scale": 2,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "150000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 100,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 3512.84,
+        "change_24h": 0.0108,
+        "turnover_24h": 980000000.0,
+        "volatility_per_sec": 0.00022
+      }
+    },
+    {
+      "symbol": "SOL-USDT-PERP",
+      "base_coin": "SOL",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 75,
+      "contract_size": "0.01",
+      "price_tick": "0.001",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 3,
+      "qty_scale": 2,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "3000000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 75,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 179.12,
+        "change_24h": -0.0342,
+        "turnover_24h": 412000000.0,
+        "volatility_per_sec": 0.00028
+      }
+    },
+    {
+      "symbol": "BNB-USDT-PERP",
+      "base_coin": "BNB",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 75,
+      "contract_size": "0.01",
+      "price_tick": "0.01",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 2,
+      "qty_scale": 2,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "800000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 75,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 602.15,
+        "change_24h": 0.0064,
+        "turnover_24h": 188000000.0,
+        "volatility_per_sec": 0.0002
+      }
+    },
+    {
+      "symbol": "XRP-USDT-PERP",
+      "base_coin": "XRP",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 75,
+      "contract_size": "1",
+      "price_tick": "0.0001",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 4,
+      "qty_scale": 0,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "5000000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 75,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 0.5821,
+        "change_24h": -0.0115,
+        "turnover_24h": 156000000.0,
+        "volatility_per_sec": 0.00028
+      }
+    },
+    {
+      "symbol": "DOGE-USDT-PERP",
+      "base_coin": "DOGE",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 75,
+      "contract_size": "1",
+      "price_tick": "1e-05",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 5,
+      "qty_scale": 0,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "20000000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 75,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 0.12874,
+        "change_24h": 0.0487,
+        "turnover_24h": 142000000.0,
+        "volatility_per_sec": 0.00035
+      }
+    },
+    {
+      "symbol": "TON-USDT-PERP",
+      "base_coin": "TON",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 50,
+      "contract_size": "1",
+      "price_tick": "0.001",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 3,
+      "qty_scale": 0,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "600000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 6.842,
+        "change_24h": -0.0039,
+        "turnover_24h": 64000000.0,
+        "volatility_per_sec": 0.0003
+      }
+    },
+    {
+      "symbol": "AVAX-USDT-PERP",
+      "base_coin": "AVAX",
+      "quote_coin": "USDT",
+      "contract_type": "PERPETUAL",
+      "max_leverage": 50,
+      "contract_size": "0.1",
+      "price_tick": "0.001",
+      "qty_step": "1",
+      "min_qty": "1",
+      "price_scale": 3,
+      "qty_scale": 1,
+      "is_open_allowed": true,
+      "is_close_allowed": true,
+      "margin_modes": [
+        "ISOLATED"
+      ],
+      "maker_fee_rate": "0.0002",
+      "taker_fee_rate": "0.0005",
+      "funding_interval_hours": 8,
+      "mark_price_source": "指数价 + 资金费率溢价",
+      "max_market_qty": "800000",
+      "tiers": [
+        {
+          "tier": 1,
+          "position_value_upper": "50000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.005",
+          "maintenance_amount": "0"
+        },
+        {
+          "tier": 2,
+          "position_value_upper": "250000",
+          "max_leverage": 50,
+          "maintenance_margin_rate": "0.01",
+          "maintenance_amount": "250"
+        },
+        {
+          "tier": 3,
+          "position_value_upper": "3000000",
+          "max_leverage": 20,
+          "maintenance_margin_rate": "0.025",
+          "maintenance_amount": "4000"
+        },
+        {
+          "tier": 4,
+          "position_value_upper": "15000000",
+          "max_leverage": 10,
+          "maintenance_margin_rate": "0.05",
+          "maintenance_amount": "79000"
+        },
+        {
+          "tier": 5,
+          "position_value_upper": "30000000",
+          "max_leverage": 5,
+          "maintenance_margin_rate": "0.1",
+          "maintenance_amount": "829000"
+        }
+      ],
+      "mock": {
+        "base_price": 34.215,
+        "change_24h": 0.0192,
+        "turnover_24h": 58000000.0,
+        "volatility_per_sec": 0.0003
+      }
+    }
+  ]
+}

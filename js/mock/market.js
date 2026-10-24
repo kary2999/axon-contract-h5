@@ -3,38 +3,7 @@
 
 import { decimalsOf } from '../lib/format.js';
 
-// base 价格取自原型行情页；contract_size 为「1 张 = 多少币」
-const SYMBOL_DEFS = [
-  { base: 'BTC', price: 67842.5, tick: 0.1, size: 0.001, lev: 125, chg: 0.0231, turnover: 2.1e9, vol: 0.00018 },
-  { base: 'ETH', price: 3512.84, tick: 0.01, size: 0.01, lev: 100, chg: 0.0108, turnover: 9.8e8, vol: 0.00022 },
-  { base: 'SOL', price: 179.12, tick: 0.001, size: 0.01, lev: 75, chg: -0.0342, turnover: 4.12e8, vol: 0.00028 },
-  { base: 'BNB', price: 602.15, tick: 0.01, size: 0.01, lev: 75, chg: 0.0064, turnover: 1.88e8, vol: 0.0002 },
-  { base: 'XRP', price: 0.5821, tick: 0.0001, size: 1, lev: 75, chg: -0.0115, turnover: 1.56e8, vol: 0.00028 },
-  { base: 'DOGE', price: 0.12874, tick: 0.00001, size: 1, lev: 75, chg: 0.0487, turnover: 1.42e8, vol: 0.00035 },
-  { base: 'TON', price: 6.842, tick: 0.001, size: 1, lev: 50, chg: -0.0039, turnover: 6.4e7, vol: 0.0003 },
-  { base: 'AVAX', price: 34.215, tick: 0.001, size: 0.1, lev: 50, chg: 0.0192, turnover: 5.8e7, vol: 0.0003 },
-];
-
-// 维持保证金率阶梯（速算额按原型脚注公式推得：前级上限 ×（本级 − 前级 MMR）+ 前级速算额；
-// 注意：原型表格里展示的速算额与其脚注公式、以及 Calc-Liq 的结果都不自洽，见 api-doc/README §4）
-function buildTiers(maxLev) {
-  const upper = [50000, 250000, 3000000, 15000000, 30000000];
-  const mmr = [0.005, 0.01, 0.025, 0.05, 0.1];
-  const lev = [maxLev, 50, 20, 10, 5].map((l) => Math.min(l, maxLev));
-  const out = [];
-  let cum = 0;
-  for (let i = 0; i < upper.length; i++) {
-    if (i > 0) cum = upper[i - 1] * (mmr[i] - mmr[i - 1]) + cum;
-    out.push({
-      tier: i + 1,
-      position_value_upper: String(upper[i]),
-      max_leverage: lev[i],
-      maintenance_margin_rate: String(mmr[i]),
-      maintenance_amount: String(Math.round(cum * 100) / 100),
-    });
-  }
-  return out;
-}
+import { fixtures } from './data.js';
 
 export const INTERVALS = { '1m': 1, '5m': 5, '15m': 15, '30m': 30, '1h': 60, '4h': 240, '1d': 1440 };
 const BAR_COUNT = 300;
@@ -63,23 +32,17 @@ class MarketSim extends Emitter {
     this.state = {};
     this.defs = {};
     this.timer = null;
-    for (const d of SYMBOL_DEFS) this.initSymbol(d);
+    for (const s of fixtures.symbols) this.initSymbol(s);
   }
 
   get symbols() { return Object.keys(this.defs); }
 
-  initSymbol(d) {
-    const symbol = `${d.base}-USDT-PERP`;
-    const scale = decimalsOf(d.tick);
-    this.defs[symbol] = {
-      symbol, base_coin: d.base, quote_coin: 'USDT', contract_type: 'PERPETUAL',
-      max_leverage: d.lev, contract_size: String(d.size), price_tick: String(d.tick),
-      qty_step: '1', min_qty: '1', price_scale: scale, qty_scale: decimalsOf(d.size),
-      is_open_allowed: true, is_close_allowed: true,
-      margin_modes: ['ISOLATED'], maker_fee_rate: '0.0002', taker_fee_rate: '0.0005',
-      funding_interval_hours: 8, mark_price_source: '指数价 + 资金费率溢价',
-      tiers: buildTiers(d.lev), _vol: d.vol,
-    };
+  /** s = symbols.json 里的一项：接口字段 + mock 段（base_price / change_24h / turnover_24h / volatility_per_sec） */
+  initSymbol(s) {
+    const { mock, ...apiFields } = s;
+    const d = { price: mock.base_price, chg: mock.change_24h, turnover: mock.turnover_24h, vol: mock.volatility_per_sec };
+    const symbol = s.symbol;
+    this.defs[symbol] = { ...apiFields, _vol: d.vol };
     const last = d.price;
     const st = {
       last, mark: last * 0.99997, index: last * 0.99992, anchor: last,
