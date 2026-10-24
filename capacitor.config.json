@@ -1,0 +1,8 @@
+{
+  "appId": "com.axon.contractdemo",
+  "appName": "Axon 合约 Demo",
+  "webDir": "www",
+  "backgroundColor": "#0B0E11",
+  "server": { "androidScheme": "https" },
+  "ios": { "contentInset": "never" }
+}

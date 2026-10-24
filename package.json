@@ -1,0 +1,21 @@
+{
+  "name": "axon-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Axon 合约模拟交易 C 端（H5 + iOS + Android，无构建步骤；打包 App 用 Capacitor）",
+  "scripts": {
+    "dev": "python3 serve.py 8080",
+    "build:www": "bash scripts/build-www.sh",
+    "cap:add:ios": "npm run build:www && cap add ios",
+    "cap:add:android": "npm run build:www && cap add android",
+    "cap:sync": "npm run build:www && cap sync",
+    "cap:open:ios": "cap open ios",
+    "cap:open:android": "cap open android"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2"
+  }
+}
