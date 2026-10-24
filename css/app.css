@@ -24,8 +24,10 @@ a { color: inherit; text-decoration: none; }
 /* ---------- 外壳 ---------- */
 #app { height: 100%; }
 .phone { position: relative; width: 100%; max-width: 480px; height: 100%; margin: 0 auto; background: var(--bg); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 0 0 1px #14181d; }
-.demo-bar { flex: none; height: 28px; display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--warn-bg); border-bottom: 1px solid rgba(255,147,35,.35); color: #FFA94D; font-size: 11px; font-weight: 700; letter-spacing: .02em; padding-top: var(--safe-top); box-sizing: content-box; }
-.demo-bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--warn); }
+/* 屏幕比手机大（桌面浏览器）时：固定 440×956 的手机画面，居中；窗口放不下则等比缩小 */
+html.framed .phone { position: absolute; left: 50%; top: 50%; width: 440px; max-width: none; height: 956px; margin: 0; transform: translate(-50%, -50%) scale(var(--frame-scale, 1)); border-radius: 28px; box-shadow: 0 0 0 1px #2a3038, 0 20px 60px rgba(0,0,0,.6); }
+.size-tip { display: none; }
+html.framed .size-tip { display: block; position: fixed; left: 0; right: 0; bottom: 8px; text-align: center; font-size: 12px; color: #5c6670; pointer-events: none; }
 .page { flex: 1; min-height: 0; display: flex; flex-direction: column; position: relative; }
 .scroll { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
 .scroll::-webkit-scrollbar { width: 0; }

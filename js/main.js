@@ -81,7 +81,6 @@ const App = {
   components: { ...ui, RiskModal },
   template: `
     <div class="phone">
-      <div class="demo-bar" v-if="route.meta.banner !== false"><i></i>DEMO · 体验金交易，盈亏不可提现</div>
       <component :is="page" :key="route.path"/>
       <TabBar v-if="route.meta.tabs"/>
       <div id="overlay-root"></div>

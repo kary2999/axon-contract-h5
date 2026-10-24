@@ -14,6 +14,7 @@
 </head>
 <body>
   <div id="app"></div>
+  <div class="size-tip" id="size-tip"></div>
   <noscript>请开启 JavaScript</noscript>
   <script>
     // 双击打开（file://）时浏览器会拦截 ES 模块，给出明确提示而不是黑屏
@@ -25,6 +26,22 @@
         '<pre style="background:#1E2329;padding:12px;border-radius:8px">python3 serve.py 8888</pre>' +
         '<p>然后访问 <b>http://localhost:8888/</b></p></div>';
     }
+  </script>
+  <script>
+    // 页面按客户端手机尺寸展示：窗口宽度 ≥ 500 视为大屏，固定为 440×956 并居中，高度不够时等比缩小
+    (function () {
+      var W = 440, H = 956, el = document.documentElement;
+      function fit() {
+        var big = window.innerWidth >= 500;
+        el.classList.toggle('framed', big);
+        if (!big) return;
+        var s = Math.min(1, (window.innerHeight - 28) / H, window.innerWidth / W);
+        el.style.setProperty('--frame-scale', s.toFixed(3));
+        document.getElementById('size-tip').textContent =
+          '为保证效果，已按手机尺寸 ' + W + '×' + H + ' 展示' + (s < 1 ? '（当前窗口较小，已缩放至 ' + Math.round(s * 100) + '%）' : '');
+      }
+      fit(); window.addEventListener('resize', fit);
+    })();
   </script>
   <script src="vendor/vue.global.prod.js"></script>
   <script src="vendor/klinecharts.min.js"></script>
